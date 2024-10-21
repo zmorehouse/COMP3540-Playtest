@@ -29,9 +29,24 @@ public class SnakeController : MonoBehaviour
     public Image redFlashPanel;  // Reference to the red panel
 
     public bool tutorialActive = false;
+    
+    //-------------------------
+    //Ollie added
+    public GameObject playerModel; // Assign this in the Inspector
 
+    private Animator playerAnimator;
+    //-------------------------
     void Start()
-    {
+    {   
+        //-------------------------
+        //Ollie added
+        playerAnimator = playerModel.GetComponent<Animator>();
+        if (playerAnimator == null)
+        {
+            Debug.LogError("Animator component not found on player model!");
+        }
+        //-------------------------
+
         resourceManager = ResourceManager.instance;
 
         // Initialize player health
@@ -70,6 +85,9 @@ public class SnakeController : MonoBehaviour
 
             MoveInventory();
         }
+        else{
+            playerAnimator.SetBool("isMoving",false);
+        }
     }
 
     public void SetMovement(bool canMove)
@@ -86,6 +104,11 @@ public class SnakeController : MonoBehaviour
         {
             transform.position = prev;
         }
+        //-------------------------
+        //Ollie added
+        playerAnimator.SetBool("isMoving",true);
+        //-------------------------
+
     }
 
     void MoveInventory()

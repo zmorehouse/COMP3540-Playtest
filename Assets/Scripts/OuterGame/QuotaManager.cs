@@ -38,6 +38,11 @@ public class QuotaManager : MonoBehaviour
         UpdateQuotaUI();
         UpdateInstructions();
         UpdateLighting(); // Initialize lighting at the start
+
+        // Ollies Time Bar
+        b1.gameObject.SetActive(false);
+        b2.gameObject.SetActive(false);
+        b3.gameObject.SetActive(false);
     }
 
     public void IncrementIslandVisit()
@@ -75,28 +80,62 @@ public class QuotaManager : MonoBehaviour
     }
 
     // Update the "time" text based on the number of islands visited
+    // private void UpdateTimeUI()
+    // {
+    //     if (timeText != null)
+    //     {
+    //         switch (currentIslandVisits)
+    //         {
+    //             case 0:
+    //                 timeText.text = "Time: 9:00 AM";
+    //                 break;
+    //             case 1:
+    //                 timeText.text = "Time: 12:00 PM";
+    //                 break;
+    //             case 2:
+    //                 timeText.text = "Time: 3:00 PM";
+    //                 break;
+    //             case 3:
+    //                 timeText.text = "Time: 6:00 PM";
+    //                 break;
+    //             default:
+    //                 timeText.text = "Time: 6:00 PM";
+    //                 break;
+    //         }
+    //     }
+    // }
+
+    // Ollies Time Update Visual
+    public GameObject b1,b2,b3;
     private void UpdateTimeUI()
     {
-        if (timeText != null)
+        switch (currentIslandVisits)
         {
-            switch (currentIslandVisits)
-            {
-                case 0:
-                    timeText.text = "Time: 9:00 AM";
-                    break;
-                case 1:
-                    timeText.text = "Time: 12:00 PM";
-                    break;
-                case 2:
-                    timeText.text = "Time: 3:00 PM";
-                    break;
-                case 3:
-                    timeText.text = "Time: 6:00 PM";
-                    break;
-                default:
-                    timeText.text = "Time: 6:00 PM";
-                    break;
-            }
+            case 0:
+                b1.gameObject.SetActive(false);
+                b2.gameObject.SetActive(false);
+                b3.gameObject.SetActive(false);
+                break;
+            case 1:
+                b1.gameObject.SetActive(true);
+                b2.gameObject.SetActive(false);
+                b3.gameObject.SetActive(false);
+                break;
+            case 2:
+                b1.gameObject.SetActive(true);
+                b2.gameObject.SetActive(true);
+                b3.gameObject.SetActive(false);
+                break;
+            case 3:
+                b1.gameObject.SetActive(true);
+                b2.gameObject.SetActive(true);
+                b3.gameObject.SetActive(true);
+                break;
+            default:
+                b1.gameObject.SetActive(true);
+                b2.gameObject.SetActive(true);
+                b3.gameObject.SetActive(true);
+                break;
         }
     }
 

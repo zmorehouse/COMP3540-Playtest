@@ -28,8 +28,23 @@ public class TutorialManager : MonoBehaviour
 
     private bool canProceed = true;
 
+    // Ollie added
+    public string animationName; // The name of the animation you want to play
+    public GameObject playerModel; // Assign this in the Inspector
+
+    private Animator playerAnimator;
+
     void Start()
     {
+        //-------------------------
+        //Ollie added
+        playerAnimator = playerModel.GetComponent<Animator>();
+        if (playerAnimator == null)
+        {
+            Debug.LogError("Animator component not found on player model!");
+        }
+        //-------------------------
+
         // Automatically find the ship with the "Player" tag
         GameObject ship = GameObject.FindGameObjectWithTag("Player");
         if (ship != null)
@@ -50,7 +65,11 @@ public class TutorialManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && canProceed)
         {
+            playerAnimator.Play("Talking", -1, 0f);
+            // playerAnimator.SetBool("NewText",true); //ollie added
             NextStep();
+            // playerAnimator.SetBool("NewText",false); //ollie added
+
         }
 
         if (currentStep == 5 && PlayerStartedDriving() && !isWaitingForWASD)

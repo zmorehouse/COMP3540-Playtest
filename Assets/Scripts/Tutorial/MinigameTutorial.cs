@@ -23,8 +23,21 @@
 
         private bool isWaitingForMovement = false;
 
+        // Ollie added
+        public string animationName; // The name of the animation you want to play
+        public GameObject playerModel; // Assign this in the Inspector
+
+        private Animator playerAnimator;
         void Start()
         {
+            //-------------------------
+            //Ollie added
+            playerAnimator = playerModel.GetComponent<Animator>();
+            if (playerAnimator == null)
+            {
+                Debug.LogError("Animator component not found on player model!");
+            }
+            //-------------------------
             // Automatically find the snake with the "Player" tag
             GameObject snake = GameObject.FindGameObjectWithTag("Player");
             if (snake != null)
@@ -45,6 +58,7 @@
         {
             if (Input.GetKeyDown(KeyCode.E) && canProceed)
             {
+                playerAnimator.Play("Talking", -1, 0f);
                 NextStep();
             }
         }

@@ -1,4 +1,0 @@
-repository "Sails to Sales Prototype@zmorehouse@cloud"
-  path "/"
-    br "/main"
-    co "/main"

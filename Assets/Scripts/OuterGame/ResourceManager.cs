@@ -15,6 +15,10 @@ public class ResourceManager : MonoBehaviour
     public int currentMangoes = 0;
     public int currentBananas = 0;
 
+    public TextMeshProUGUI BananaText; // UI element to display the quotas
+    public TextMeshProUGUI LemonText; // UI element to display the quotas
+    public TextMeshProUGUI WatermelonText; // UI element to display the quotas
+
     public TextMeshProUGUI resourceText;     // UI element to display resources
 
     private void Awake()
@@ -89,7 +93,10 @@ public class ResourceManager : MonoBehaviour
     {
         if (resourceText != null)
         {
-            resourceText.text = $"Coconuts: {totalCoconuts + currentCoconuts} | Mangoes: {totalMangoes + currentMangoes} | Bananas: {totalBananas + currentBananas}";
+            // resourceText.text = $"Coconuts: {totalCoconuts + currentCoconuts} | Mangoes: {totalMangoes + currentMangoes} | Bananas: {totalBananas + currentBananas}";
+            BananaText.text = $"{totalBananas + currentBananas}";
+            LemonText.text = $"{totalCoconuts + currentCoconuts}";
+            WatermelonText.text = $"{totalMangoes + currentMangoes}";
         }
     }
 
