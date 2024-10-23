@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         // Set an initial offset for the camera
-        offset = new Vector3(0, 2, -5); // Adjust these values based on your needs
+        // offset = new Vector3(0, 2, -5); // Adjust these values based on your needs
     }
 
     void LateUpdate()

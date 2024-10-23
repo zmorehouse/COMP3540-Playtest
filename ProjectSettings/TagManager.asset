@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Island
+  - Enemy
+  - Tree
+  - Food
+  - Monkey
+  - Package
+  - Cannonball
+  - FoodLight
   layers:
   - Default
   - TransparentFX
