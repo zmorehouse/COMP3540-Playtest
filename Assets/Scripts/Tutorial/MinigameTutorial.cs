@@ -11,6 +11,16 @@
         private int currentStep = 0;
         private bool canProceed = true;
 
+        // private string[] tutorialSteps = new string[]
+        // {
+        //     "Welcome to the island!",
+        //     "Get those legs to work—use A and D to change directions.",
+        //     "Look at you go! See those trees? They're packed with different fruits.",
+        //     "You can pick as many or as few as you like. Or leave with nothing—hey, it’s your call!",
+        //     "Ready to head out? Just head back to your ship and press E to sail away.",
+        //     "One more thing—beware the monkeys! If they catch you, you'll lose everything you've grabbed. So don't get too greedy!"
+        // };
+
         private string[] tutorialSteps = new string[]
         {
             "Welcome to the island!",
@@ -18,7 +28,8 @@
             "Look at you go! See those trees? They're packed with different fruits.",
             "You can pick as many or as few as you like. Or leave with nothing—hey, it’s your call!",
             "Ready to head out? Just head back to your ship and press E to sail away.",
-            "One more thing—beware the monkeys! If they catch you, you'll lose everything you've grabbed. So don't get too greedy!"
+            "One more thing—beware the monkeys! If they catch you, you'll lose everything you've grabbed. So don't get too greedy!",
+            "You can defend yourself by shooting a cannonball! Just press or hold SPACE."
         };
 
         private bool isWaitingForMovement = false;
@@ -82,6 +93,12 @@
                 else if (currentStep == 5) // "Beware the monkeys!"
                 {
                     instructionText.text = "Press E to continue.";
+                }
+                else if (currentStep == 6) //Shoot
+                {
+                    instructionText.text = "Press SPACE to shoot.";
+                    // shoot.disableShoot = false;
+                    PlayerPrefs.SetInt("disableShoot", 0);
                 }
             }
             else
